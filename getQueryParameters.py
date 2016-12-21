@@ -76,6 +76,9 @@ def getAllSameSourceLinks(links,url):
 def getCompleteLinks(links, domain):
 	result = set()
 	for link in links:
+		if link.startswith("//"): # 解决有的URL是以//开头的的BUG , 这种情况并不是当前域名下的子文件夹
+			link = "http:" + link
+			continue
 		if not (link.startswith("http://") or link.startswith("https://")):
 			result.add(domain + link)
 		else:
