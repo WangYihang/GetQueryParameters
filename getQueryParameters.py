@@ -166,6 +166,8 @@ def mergeSameQuery(links):
 	return results
 
 def formateUrl(url):
+	if not (url.startswith("http://") or url.startswith("https://")):
+		url = "http://" + url
 	if not url.endswith("/"):
 		url += "/"
 	return url
